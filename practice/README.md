@@ -1,1 +1,1 @@
-# Pracitce Application
+# Practice Application
