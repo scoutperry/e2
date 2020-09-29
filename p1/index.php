@@ -1,27 +1,37 @@
 <?php
-$penny = rand(0,1);
-$penny2 = rand(0,1);
+$APenny = rand(0,1);
+$BPenny = rand(0,1);
 $playerA = "odd";
 $playerB = "even";
 $choices = [
     'even',
     'odd',
 ];
-var_dump($choices);
 
 shuffle($choices);
 $playerApick = array_pop($choices);
+$playerBpick = array_shift($choices);
 
+if($APenny == 0) {
+    $APennyLands = "heads";
+} else {
+    $APennyLands = "tails";
+}
 
+if($BPenny == 0) {
+    $BPennyLands = "heads";
+} else {
+    $BPennyLands = "tails";
+}
 
-if($penny == $penny2) {
+if($APenny == $BPenny) {
     $result = "even";
 } else {
     $result = "odd";
 }
 
 
-if ($result == "odd"){
+if ($result == $playerApick){
     $winner = "Player A";
 }else{
     $winner = "Player B";
@@ -31,13 +41,5 @@ if ($result == "odd"){
 
 require 'index-view.php';
 
-/*if ($result == "odd"){
-    $winner = "Player A"
-}else{
-    $winner = "Player A"
-}
 
-<?php echo $penny ?>
-<?php echo $penny2 ?>
-<?php echo $result ?>*/
 
