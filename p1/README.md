@@ -1,7 +1,9 @@
 By: Scout Perry
 Production URL: http://e2p1.scoutperry.me
 
-Outside Resources
+Outside Resources:
+All resources pulled from class
 
 
-Notes for the Instructor
+Notes for the Instructor:
+Thanks for all the help
