@@ -2,12 +2,12 @@
 <html lang='en'>
 
 <head>
-    <title>Project 1</title>
+    <title>Project 2</title>
     <meta charset='uft-8'>
 </head>
 
 <body>
-    <h1>Project One: Matching Pennies</h1>
+    <h1>Project Two: Matching Pennies</h1>
     <h2>Mechanics</h2>
     <ul>
         <li>Player A picks either odd or even and Player B defaults to the opposing choice.</li>
@@ -15,6 +15,7 @@
         <li>If both pennies match the result is even, the player that chose even wins.</li>
         <li>If the pennies land on different sides the result is odd and the player that chose odd wins.</li>
     </ul>
+
     <form method='GET' action='process.php'>
         <div>
             Choose odd or even
