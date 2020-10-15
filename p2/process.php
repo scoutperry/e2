@@ -34,7 +34,7 @@ if ($APenny == $BPenny) {
 if ($result == $Apick) {
     $winner = "You win!";
 } else {
-    $winner = "Sorry, maybe next time";
+    $winner = "Player B wins. Would you like to try again?";
 }
 
 
