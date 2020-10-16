@@ -21,7 +21,7 @@
     </ul>
     <form method='GET' action='process.php'>
         <div>
-            Choose 'Rock,' 'Paper,' 'Scissors;'
+            Choose 'Rock,' 'Paper,' or 'Scissors;'</br>
             <input type='radio' name='Apick' value='rock' id='rock' checked><label for='rock'>Rock</label>
             <input type='radio' name='Apick' value='paper' id='paper'><label for='paper'>Paper</label>
             <input type='radio' name='Apick' value='scissors' id='scissors'><label for='scissors'>Scissors</label>
