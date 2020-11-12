@@ -1,52 +1,25 @@
 <?php
-$APenny = rand(0, 1);
-$BPenny = rand(0, 1);
-
 session_start();
 $Apick= $_GET['Apick'];
+$APenny = flipPenny();
+$BPenny = flipPenny();
+$Bpick= ($Apick == 'odd') ? 'even' : 'odd';
+$result = ($APenny == $BPenny) ? "even" : "odd";
+$winner = ($result == $Apick) ? "You win!" : "Player B wins. Would you like to try again?";
 
-if ($Apick == 'odd') {
-    $Bpick = 'even';
-} else {
-    $Bpick = 'odd';
+function flipPenny() {
+    $penny = ['heads', 'tails'];
+    return $penny[rand(0,1)];
 }
-
-
-if ($APenny == 0) {
-    $APennyLands = "heads";
-} else {
-    $APennyLands = "tails";
-}
-
-if ($BPenny == 0) {
-    $BPennyLands = "heads";
-} else {
-    $BPennyLands = "tails";
-}
-
-if ($APenny == $BPenny) {
-    $result = "even";
-} else {
-    $result = "odd";
-}
-
-
-if ($result == $Apick) {
-    $winner = "You win!";
-} else {
-    $winner = "Player B wins. Would you like to try again?";
-}
-
 
 $_SESSION['throw'] = [
     'Apick' => $Apick,
     'Bpick' => $Bpick,
-    'APennyLands' => $APennyLands,
-    'BPennyLands' => $BPennyLands,
+    'APenny' => $APenny,
+    'BPenny' => $BPenny,
     'result' => $result,
     'winner' => $winner,
 ];
 
 header('Location:index.php');
-
 require 'index-view.php';

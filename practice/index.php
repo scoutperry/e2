@@ -1,10 +1,12 @@
-<!doctype html>
-<html lang='en'>
-<head><title>Practice Application</title>
-    <meta charset='uft-8'>
-</head>
-<body>
-    <h1>Practice Application</h1>
-<p>hello<p>
-</body>
-</html>
+<?php
+
+require __DIR__.'/vendor/autoload.php';
+
+use RPS\Game;
+
+$game = new Game();
+
+# Each invocation of the `play` method will play and track a new round of player (given move) vs. computer
+var_dump($game->play('rock'));
+
+require 'index-view.php';

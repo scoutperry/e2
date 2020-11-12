@@ -31,9 +31,9 @@
         </li>
         <li>Player B chooses <?php echo $Bpick ?>
         </li>
-        <li>You flip your penny. It lands on <?php echo $APennyLands ?>
+        <li>You flip your penny. It lands on <?php echo $APenny?>
         </li>
-        <li>Player B flips their penny. Player B gets <?php echo $BPennyLands ?>
+        <li>Player B flips their penny. Player B gets <?php echo $BPenny ?>
         </li>
         <li>The result from the pennies is <?php echo $result ?>
         </li>
