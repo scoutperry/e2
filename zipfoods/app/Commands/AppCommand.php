@@ -30,6 +30,7 @@ class AppCommand extends Command
 
     dump('Migration complete; check the database for your new tables.');
     }
+    
     public function seed()
     {   
         $this->seedProducts();
@@ -45,7 +46,6 @@ class AppCommand extends Command
 
         dump('Seeding complete; check the database for your new data.');
     }
-
 
     public function seedProducts()
     {

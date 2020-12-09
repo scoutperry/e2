@@ -74,13 +74,50 @@ class ProductController extends Controller
         'review' => $review,
         'product_id' => $id,
     ];
+
     $this->app->db()->insert('reviews', $data);
-
-
     $this->app->redirect('/product?id='.$id, ['confirmationName' => $name]);
 
+    }
+
+    public function newProduct()
+    {
+    //check it
+    $this->app->validate([
+        'name' => 'required',
+        'description' => 'required',
+        'price' => 'required|numeric',
+        'available' => 'required|digit',
+        'weight' => 'required|numeric',
+        'perishable' => 'required',
+    ]);
+
+    //save it
+    $name = $this->app->input('name'); 
+    $description = $this->app->input('description'); 
+    $price = $this->app->input('price'); 
+    $available = $this->app->input('available'); 
+    $weight = $this->app->input('weight');
+    $perishable = $this->app->input('perishable');
+
+    //stick it in the database
+    $data = [
+        'name' => $name,
+        'description' => $description,
+        'price' => $price,
+        'available' => $available,
+        'weight' => $weight,
+        'perishable' => $perishable,
+    ];
+
+    $this->app->db()->insert('products', $data);
 
 
+    //$this->app->redirect('/product?id='.$id, ['confirmationName' => $name])
 
     }
+
+
+
+
 }

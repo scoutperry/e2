@@ -1,14 +1,15 @@
 @extends('templates.master')
 
 @section('title')
-All Products
+All Rounds
 
 @endsection
 
 @section('content')
-<h2>All Products</h2>
+<!--
+<h2>All Rounds</h2>
 <div id='product-index'>
-    @foreach($products as $product)
+    @foreach($rounds as $round)
     <a href='/product?id={{ $product['id'] }}'>
         <div class='product'>
             <div class='product-name'>{{ $product['name'] }}</div>
@@ -50,5 +51,5 @@ All Products
     </div>
 
     <button type='submit' class='btn btn-primary'>Submit Review</button>
-</form>
+</form> -->
 @endsection

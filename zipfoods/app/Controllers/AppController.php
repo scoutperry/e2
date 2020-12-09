@@ -107,10 +107,20 @@ class AppController extends Controller
     public function practice2(){
         //dump($this->app->db()->all('products'));
         //dump($this->app->db()->findById('products', 5));
-        dump($this->app->db()->findByColumn('products', 'available', '<', 10));
+        //dump($this->app->db()->findByColumn('products', 'available', '<', 10));
+        /*$data = [
+            'name' => 'Driscoll’s Strawberries',
+            'description' => 'Driscoll’s Strawberries are consistently the best, sweetest, juiciest strawberries available. This size is the best selling, as it is both convenient for completing a cherished family recipes and for preparing a quick snack straight from the fridge.',
+            'price' => 4.99,
+            'available' => 0,
+            'weight' => 1,
+            'perishable' => true
+        ];
+        
+        $this->app->db()->insert('products', $data); */
     }
 
-
+ 
 
     
 }

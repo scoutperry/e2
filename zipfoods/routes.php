@@ -10,6 +10,7 @@ return [
     '/about' => ['AppController', 'about'],
     '/products/save-review' => ['ProductController', 'saveReview'],
     '/practice' => ['AppController', 'practice'],
-    '/practice2' => ['AppController', 'practice2'],
+    //'/practice2' => ['AppController', 'practice2'],
+    '/products/new' => ['ProductController', 'newProduct'],
 
 ];
