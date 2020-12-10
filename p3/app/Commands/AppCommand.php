@@ -8,10 +8,10 @@ class AppCommand extends Command
     {
         $this->app->db()->createTable('rounds', [
             'name' => 'varchar(255)',
-            'Apick' => 'varchar(255)',
-            'Bpick' => 'varchar(255)',
-            'APenny' => 'varchar(255)',
-            'BPenny' => 'varchar(255)',
+            'aPick' => 'varchar(255)',
+            'bPick' => 'varchar(255)',
+            'aPenny' => 'varchar(255)',
+            'bPenny' => 'varchar(255)',
             'result' => 'varchar(255)',
             'winner' => 'varchar(255)',
             'time' => 'timestamp',
@@ -23,26 +23,26 @@ class AppCommand extends Command
     {
         $faker = \Faker\Factory::create();
         
-        function PickAGoober($string,$anotherString) {
+        function pickAGoober($string,$anotherString) {
             $goober = [$string, $anotherString];
             return $goober[rand(0,1)];
         }     
     
         for ($i = 0; $i < 10; $i++) {
             $name = $faker->name;
-            $Apick = PickAGoober('odd','even');
-            $APenny = PickAGoober('heads','tails');
-            $BPenny = PickAGoober('heads','tails');
-            $result = ($APenny == $BPenny) ? "even" : "odd";
+            $aPick = pickAGoober('odd','even');
+            $aPenny = pickAGoober('heads','tails');
+            $bPenny = pickAGoober('heads','tails');
+            $result = ($aPenny == $bPenny) ? 'even' : 'odd';
                 
             $round = [
                 'name' => $name,
-                'Apick' => $Apick,
-                'Bpick' => ($Apick == 'odd') ? 'even' : 'odd',
-                'APenny' => $APenny,
-                'BPenny' => $BPenny,
+                'aPick' => $aPick,
+                'bPick' => ($aPick == 'odd') ? 'even' : 'odd',
+                'aPenny' => $aPenny,
+                'bPenny' => $bPenny,
                 'result' => $result,
-                'winner' => ($result == $Apick) ? $name : "Player B",
+                'winner' => ($result == $aPick) ? $name : 'Player B',
                 'time' => $faker->dateTimeThisMonth()->format('Y-m-d H:i:s'),
 
             ];

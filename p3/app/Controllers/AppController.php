@@ -6,22 +6,21 @@ class AppController extends Controller
 
     public function index()
     {
-        //do i need all this?
         $name = $this->app->old('name');
-        $Apick = $this->app->old('Apick');
-        $Bpick = $this->app->old('Bpick');
-        $APenny = $this->app->old('APenny');
-        $BPenny = $this->app->old('BPenny');
+        $aPick = $this->app->old('aPick');
+        $bPick = $this->app->old('bPick');
+        $aPenny = $this->app->old('aPenny');
+        $bPenny = $this->app->old('bPenny');
         $result = $this->app->old('result');
         $winner = $this->app->old('winner');
 
 
         return $this->app->view('index', [
             'name' => $name,
-            'Apick' => $Apick,
-            'Bpick' => $Bpick,
-            'APenny' => $APenny,
-            'BPenny' => $BPenny,
+            'aPick' => $aPick,
+            'bPick' => $bPick,
+            'aPenny' => $aPenny,
+            'bPenny' => $bPenny,
             'result' => $result,
             'winner' => $winner,
         ]);
@@ -67,20 +66,19 @@ class AppController extends Controller
         }
 
         $name = $this->app->input('name');
-        $Apick = $this->app->input('Apick','odd');
-        $Bpick= ($Apick == 'odd') ? 'even' : 'odd';
-        $APenny = flipPenny();
-        $BPenny = flipPenny();
-        $result = ($APenny == $BPenny) ? 'even' : 'odd';
-        $winner = ($result == $Apick) ? $name : 'Player B';
+        $aPick = $this->app->input('aPick','odd');
+        $bPick= ($aPick == 'odd') ? 'even' : 'odd';
+        $aPenny = flipPenny();
+        $bPenny = flipPenny();
+        $result = ($aPenny == $bPenny) ? 'even' : 'odd';
+        $winner = ($result == $aPick) ? $name : 'Player B';
 
-        //persist to database!!!!
         $data = [
             'name' => $name,
-            'Apick' => $Apick,
-            'Bpick' => $Bpick,
-            'APenny' => $APenny,
-            'BPenny' => $BPenny,
+            'aPick' => $aPick,
+            'bPick' => $bPick,
+            'aPenny' => $aPenny,
+            'bPenny' => $bPenny,
             'result' => $result,
             'winner' => $winner,
             'time' => time('Y-m-d H:i:s'),
@@ -88,18 +86,17 @@ class AppController extends Controller
     
         $this->app->db()->insert('rounds', $data);
 
-        //is this necessary?
         
         $this->app->redirect('/', [
             'name' => $name,
-            'Apick' => $Apick,
-            'Bpick' => $Bpick,
-            'APenny' => $APenny,
-            'BPenny' => $BPenny,
+            'aPick' => $aPick,
+            'bPick' => $bPick,
+            'aPenny' => $aPenny,
+            'bPenny' => $bPenny,
             'result' => $result,
             'winner' => $winner,
 
-            ]);
+            ]); 
             
 
     } 

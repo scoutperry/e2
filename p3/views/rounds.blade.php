@@ -7,28 +7,13 @@ Matching Pennies - {{ $round['id'] }}
 
 @section('content')
 
-<!--@if($app->errorsExist())
-<ul class='error alert alert-danger'>
-    @foreach($app->errors() as $error)
-    <li>{{ $error }}</li>
-    @endforeach
-</ul>
-@elseif($confirmationName)
-<div class='alert alert-success'>
-    Thank you, {{ $confirmationName }} for your review!
-</div>
-@endif -->
-
 <div id='round-show'>
     <h2>Round {{ $round['id'] }}: {{ $round['winner'] }}</h2>
 
-    <!--   <p class='round-description'>
-        {{ $round['description'] }}
-    </p> -->
-    <div class>{{ $round['name'] }} choose {{ $round['Apick'] }}</div>
-    <div class>Player B chose {{ $round['Bpick'] }}</div>
-    <div class>The first penny landed on {{ $round['APenny'] }}</div>
-    <div class>The second penny landed on {{ $round['BPenny'] }}</div>
+    <div class>{{ $round['name'] }} choose {{ $round['aPick'] }}</div>
+    <div class>Player B chose {{ $round['bPick'] }}</div>
+    <div class>The first penny landed on {{ $round['aPenny'] }}</div>
+    <div class>The second penny landed on {{ $round['bPenny'] }}</div>
     <div class>The result from the pennies was {{ $round['result'] }}</div>
     <div class>Which made {{ $round['winner'] }} the winner</div>
     <div class>{{ $round['time'] }}</div>

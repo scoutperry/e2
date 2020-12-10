@@ -28,9 +28,9 @@ Matching Pennies
         </div>
         <div class='form-group'>
             How will the two pennies land? Odd or even?
-            <input type='radio' class='form-control' name='Apick' value='odd' id='odd' checked><label
+            <input type='radio' class='form-control' name='aPick' value='odd' id='odd' checked><label
                 for='odd'>Odd</label>
-            <input type='radio' class='form-control' name='Apick' value='even' id='even'><label for='even'>Even</label>
+            <input type='radio' class='form-control' name='aPick' value='even' id='even'><label for='even'>Even</label>
         </div>
         <button type='submit'>Play!</button>
     </form>
@@ -38,13 +38,13 @@ Matching Pennies
     <h2>Results</h2>
     <ul>
 
-        <li>{{ $name }} chose {{ $Apick }}
+        <li>{{ $name }} chose {{ $aPick }}
         </li>
-        <li>Player B chooses {{ $Bpick }}
+        <li>Player B chooses {{ $bPick }}
         </li>
-        <li>You flip your penny. It lands on {{ $APenny }}
+        <li>You flip your penny. It lands on {{ $aPenny }}
         </li>
-        <li>Player B flips their penny. Player B gets {{ $BPenny }}
+        <li>Player B flips their penny. Player B gets {{ $bPenny }}
         </li>
         <li>The result from the pennies is {{ $result }}
         </li>
