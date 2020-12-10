@@ -25,7 +25,7 @@ Matching Pennies - {{ $round['id'] }}
     <!--   <p class='round-description'>
         {{ $round['description'] }}
     </p> -->
-    <div class>You choose {{ $round['Apick'] }}</div>
+    <div class>{{ $round['name'] }} choose {{ $round['Apick'] }}</div>
     <div class>Player B chose {{ $round['Bpick'] }}</div>
     <div class>The first penny landed on {{ $round['APenny'] }}</div>
     <div class>The second penny landed on {{ $round['BPenny'] }}</div>

@@ -20,24 +20,19 @@ class AppCommand extends Command
     }
     
     public function seed()
-    { # Instantiate a new instance of the Faker\Factory class
+    {
         $faker = \Faker\Factory::create();
-
-        //theres probably a neater way of doing this...
-        function flipPenny() {
-            $penny = ['heads', 'tails'];
-            return $penny[rand(0,1)];
-        }
-        function PickAPick() {
-            $penny = ['odd', 'even'];
-            return $penny[rand(0,1)];
-        }
+        
+        function PickAGoober($string,$anotherString) {
+            $goober = [$string, $anotherString];
+            return $goober[rand(0,1)];
+        }     
     
         for ($i = 0; $i < 10; $i++) {
             $name = $faker->name;
-            $Apick = PickAPick();
-            $APenny = flipPenny();
-            $BPenny = flipPenny();
+            $Apick = PickAGoober('odd','even');
+            $APenny = PickAGoober('heads','tails');
+            $BPenny = PickAGoober('heads','tails');
             $result = ($APenny == $BPenny) ? "even" : "odd";
                 
             $round = [
@@ -51,19 +46,7 @@ class AppCommand extends Command
                 'time' => $faker->dateTimeThisMonth()->format('Y-m-d H:i:s'),
 
             ];
-            
-            /*
-            $round = [
-                'move' => $moves[$randomMove],
-                'move' => 'heads',
-                'win' => rand(0,1),
-                'win' => '1',
-                'time' => $faker->dateTimeThisMonth()->format('Y-m-d H:i:s'),
-                'time' => '2020-12-7 11:48:03',
-            ];
-            */
     
-        # Insert the round
         $this->app->db()->insert('rounds', $round);
         }
         dump('rounds table seeded');

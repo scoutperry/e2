@@ -12,7 +12,7 @@ Matching Pennies - All Rounds
     @foreach($rounds as $round)
     <a href='/round?id={{ $round['id'] }}'>
         <div class='round'>
-            <div class='round-name'>Round {{ $round['id'] }}: {{ $round['winner'] }} at {{ $round['time'] }}</div>
+            <div class='round-name'>Round {{ $round['id'] }}: {{ $round['winner'] }}</div>
         </div>
     </a>
     @endforeach

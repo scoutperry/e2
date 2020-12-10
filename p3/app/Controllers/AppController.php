@@ -7,6 +7,7 @@ class AppController extends Controller
     public function index()
     {
         //do i need all this?
+        $name = $this->app->old('name');
         $Apick = $this->app->old('Apick');
         $Bpick = $this->app->old('Bpick');
         $APenny = $this->app->old('APenny');
@@ -16,6 +17,7 @@ class AppController extends Controller
 
 
         return $this->app->view('index', [
+            'name' => $name,
             'Apick' => $Apick,
             'Bpick' => $Bpick,
             'APenny' => $APenny,
@@ -42,11 +44,11 @@ class AppController extends Controller
 
         $round = $this->app->db()->findById('rounds', $id);
 
-        /*Come back to this later!!!!!
-        if(is_null($round)){
-            return $this->app->view('products.missing', ['id' => $id]);
-        }
-        */
+        //Come back to this later!!!!!
+       /* if(is_null($round)){
+            return $this->app->view('missing', ['id' => $id]);
+        }*/
+        
 
         return $this->app->view('rounds',[
             'round' => $round,
@@ -64,13 +66,13 @@ class AppController extends Controller
             return $penny[rand(0,1)];
         }
 
-        $name = $this->app->input('name','odd');
+        $name = $this->app->input('name');
         $Apick = $this->app->input('Apick','odd');
         $Bpick= ($Apick == 'odd') ? 'even' : 'odd';
         $APenny = flipPenny();
         $BPenny = flipPenny();
-        $result = ($APenny == $BPenny) ? "even" : "odd";
-        $winner = ($result == $Apick) ? $name : "Player B";
+        $result = ($APenny == $BPenny) ? 'even' : 'odd';
+        $winner = ($result == $Apick) ? $name : 'Player B';
 
         //persist to database!!!!
         $data = [
@@ -87,7 +89,9 @@ class AppController extends Controller
         $this->app->db()->insert('rounds', $data);
 
         //is this necessary?
+        
         $this->app->redirect('/', [
+            'name' => $name,
             'Apick' => $Apick,
             'Bpick' => $Bpick,
             'APenny' => $APenny,
@@ -96,38 +100,7 @@ class AppController extends Controller
             'winner' => $winner,
 
             ]);
+            
 
-
-
-
-    /*
-        function flipPenny() {
-            $penny = ['heads', 'tails'];
-            return $penny[rand(0,1)];
-        }
-
-        //$Apick = array_pop($coinSides);
-        $coinSides = ['odd', 'even'];
-        shuffle($coinSides);
-
-        $Apick = $this->app->input('Apick','odd');
-        //$Apick= $POST['Apick'];
-        $Bpick= ($Apick == 'odd') ? 'even' : 'odd';
-        $APenny = flipPenny();
-        $BPenny = flipPenny();
-        $result = ($APenny == $BPenny) ? "even" : "odd";
-        $winner = ($result == $Apick) ? "You" : "Player B";
-        
-        return $this->app->view('index',[
-            'Apick' => $Apick,
-            'APenny' => $APenny,
-            'BPenny' => $BPenny,
-            'Bpick' => $Bpick,
-            'result' => $result,
-            'winner' => $winner,
-
-        ]);
-        $this->app->redirect('/');
-        */
     } 
 }
