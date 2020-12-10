@@ -3,12 +3,10 @@ namespace App\Controllers;
 
 class AppController extends Controller
 {
-    /**
-     * This method is triggered by the route "/"
-    */
 
     public function index()
     {
+        //do i need all this?
         $Apick = $this->app->old('Apick');
         $Bpick = $this->app->old('Bpick');
         $APenny = $this->app->old('APenny');
@@ -25,50 +23,70 @@ class AppController extends Controller
             'result' => $result,
             'winner' => $winner,
         ]);
-
-
     }
 
     public function history()
     {
-        dump('This is the History page');
-        
+        return $this->app->view('history', [
+            'rounds' => $this->app->db()->all('rounds')
+            ]);            
     }
 
     public function round()
     {
-        dump('This is the Round page');
+        $id = $this->app->param('id');
 
+        if(is_null($id)){
+            $this->app->redirect('/history');
+        }
+
+        $round = $this->app->db()->findById('rounds', $id);
+
+        /*Come back to this later!!!!!
+        if(is_null($round)){
+            return $this->app->view('products.missing', ['id' => $id]);
+        }
+        */
+
+        return $this->app->view('rounds',[
+            'round' => $round,
+        ]);
     }
 
     public function play()
     {
-          //dump($_POST);
-          //Check function within function
+        $this->app->validate([
+            'name' => 'required',
+          ]);
+        
         function flipPenny() {
             $penny = ['heads', 'tails'];
             return $penny[rand(0,1)];
         }
 
+        $name = $this->app->input('name','odd');
         $Apick = $this->app->input('Apick','odd');
         $Bpick= ($Apick == 'odd') ? 'even' : 'odd';
         $APenny = flipPenny();
         $BPenny = flipPenny();
         $result = ($APenny == $BPenny) ? "even" : "odd";
-        $winner = ($result == $Apick) ? "You" : "Player B";
+        $winner = ($result == $Apick) ? $name : "Player B";
 
         //persist to database!!!!
-        /*$data = [
+        $data = [
+            'name' => $name,
             'Apick' => $Apick,
             'Bpick' => $Bpick,
             'APenny' => $APenny,
             'BPenny' => $BPenny,
             'result' => $result,
             'winner' => $winner,
+            'time' => time('Y-m-d H:i:s'),
         ];
     
-        $this->app->db()->insert('rounds', $data);*/
+        $this->app->db()->insert('rounds', $data);
 
+        //is this necessary?
         $this->app->redirect('/', [
             'Apick' => $Apick,
             'Bpick' => $Bpick,
