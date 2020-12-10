@@ -43,10 +43,7 @@ class AppController extends Controller
 
         $round = $this->app->db()->findById('rounds', $id);
 
-        //Come back to this later!!!!!
-       /* if(is_null($round)){
-            return $this->app->view('missing', ['id' => $id]);
-        }*/
+
         
 
         return $this->app->view('rounds',[
